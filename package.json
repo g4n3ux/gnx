@@ -20,16 +20,26 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@apollo/server": "^4.12.2",
+    "@as-integrations/fastify": "^3.0.0",
+    "@nestjs/apollo": "^13.1.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/graphql": "^13.1.0",
     "@nestjs/platform-express": "^11.0.1",
-    "@nestjs/platform-fastify": "^11.1.4",
+    "@nestjs/platform-fastify": "^11.1.6",
+    "@nestjs/typeorm": "^11.0.0",
     "class": "^0.1.4",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
+    "graphql": "^16.11.0",
+    "mssql": "^11.0.1",
+    "mysql2": "^3.14.3",
+    "pg": "^8.16.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
+    "typeorm": "^0.3.25",
     "validator": "^13.15.15"
   },
   "devDependencies": {
