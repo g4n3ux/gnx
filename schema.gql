@@ -3,8 +3,9 @@
 # ------------------------------------------------------
 
 type Global {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Float!
+  name_company: String!
+  logo_company: String!
 }
 
 type Query {
@@ -19,12 +20,12 @@ type Mutation {
 }
 
 input CreateGlobalInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name_company: String!
+  logo_company: String!
 }
 
 input UpdateGlobalInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name_company: String
+  logo_company: String
   id: Int!
 }
