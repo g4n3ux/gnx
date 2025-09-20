@@ -1,5 +1,14 @@
 import { ObjectType, Field, Int, registerEnumType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn,UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+import { Role } from '../../roles/entities/role.entity';
 
 // definimos el enum
 export enum DocumentType {
@@ -17,7 +26,6 @@ registerEnumType(DocumentType, {
 @ObjectType()
 @Entity()
 export class User {
-  
   @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
@@ -92,10 +100,6 @@ export class User {
 
   @Field()
   @Column()
-  rol: string;
-
-  @Field()
-  @Column()
   estado: string;
 
   @Field()
@@ -129,4 +133,10 @@ export class User {
   @Field()
   @Column('decimal')
   salary: number;
+
+  // 🔹 Relación ManyToMany con Roles
+  @Field(() => [Role])
+  @ManyToMany(() => Role, (role) => role.users, { eager: true })
+  @JoinTable({ name: 'user_roles' }) // nombre de la tabla pivote
+  roles: Role[];
 }
