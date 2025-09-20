@@ -7,6 +7,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { ImportsModule } from './graphql/imports';
 import { DatabaseModule } from './database/database.module'; // <--- importas el nuevo módulo
 
+
 @Module({
   imports: [
     // Configuración global de variables de entorno
@@ -27,6 +28,7 @@ import { DatabaseModule } from './database/database.module'; // <--- importas el
 
     // Módulos propios
     ImportsModule,
+    
   ],
 })
 export class AppModule {}

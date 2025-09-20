@@ -8,15 +8,63 @@ type Global {
   logo_company: String!
 }
 
+type User {
+  id: Int!
+  user_name: String!
+  password: String!
+  second_name: String!
+  last_name: String!
+  second_last_name: String!
+  document_type: DocumentType!
+  document_number: String!
+  personal_email: String!
+  institutional_email: String!
+  phone_number: String!
+  address: String!
+  city: String!
+  country: String!
+  sucursal: String!
+  cargo: String!
+  fecha_nacimiento: String!
+  fecha_vinculacion: String!
+  rol: String!
+  estado: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+  last_login: DateTime
+  created_by: String!
+  updated_by: String!
+  deleted_by: String
+  deleted_at: DateTime
+  salary: Float!
+}
+
+"""Tipo de documento permitido"""
+enum DocumentType {
+  CC
+  DNI
+  PASSPORT
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
   globals: [Global!]!
   global(id: Int!): Global!
+  users: [User!]!
+  user(id: Int!): User!
 }
 
 type Mutation {
   createGlobal(createGlobalInput: CreateGlobalInput!): Global!
   updateGlobal(updateGlobalInput: UpdateGlobalInput!): Global!
   removeGlobal(id: Int!): Global!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
 }
 
 input CreateGlobalInput {
@@ -27,5 +75,62 @@ input CreateGlobalInput {
 input UpdateGlobalInput {
   name_company: String
   logo_company: String
+  id: Int!
+}
+
+input CreateUserInput {
+  user_name: String!
+  password: String!
+  second_name: String!
+  last_name: String!
+  second_last_name: String!
+  document_type: DocumentType!
+  document_number: String!
+  personal_email: String!
+  institutional_email: String!
+  phone_number: String!
+  address: String!
+  city: String!
+  country: String!
+  sucursal: String!
+  cargo: String!
+  fecha_nacimiento: String!
+  fecha_vinculacion: String!
+  rol: String!
+  estado: String!
+  last_login: DateTime
+  created_by: String!
+  updated_by: String!
+  deleted_by: String
+  deleted_at: DateTime
+  salary: Float!
+}
+
+input UpdateUserInput {
+  user_name: String
+  password: String
+  second_name: String
+  last_name: String
+  second_last_name: String
+  document_type: DocumentType
+  document_number: String
+  personal_email: String
+  institutional_email: String
+  phone_number: String
+  address: String
+  city: String
+  country: String
+  sucursal: String
+  cargo: String
+  fecha_nacimiento: String
+  fecha_vinculacion: String
+  rol: String
+  estado: String
+  last_login: DateTime
+  created_by: String
+  updated_by: String
+  deleted_by: String
+  deleted_at: DateTime
+  salary: Float
   id: Int!
 }
