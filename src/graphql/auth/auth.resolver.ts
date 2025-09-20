@@ -1,17 +1,17 @@
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
-import { User } from '../users/entities/user.entity';
+import { LoginInput } from './login.input';
 
 @Resolver()
 export class AuthResolver {
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
-  @Mutation(() => String, { description: 'Login de usuario. Devuelve JWT' })
-  async login(
-    @Args('user_name') user_name: string,
-    @Args('password') password: string,
-  ): Promise<string> {
-    const user = await this.authService.validateUser(user_name, password);
+  @Mutation(() => String) // devolvemos el token como string
+  async login(@Args('loginInput') loginInput: LoginInput): Promise<string> {
+    const user = await this.authService.validateUser(
+      loginInput.username,
+      loginInput.password,
+    );
     const token = await this.authService.login(user);
     return token.access_token;
   }

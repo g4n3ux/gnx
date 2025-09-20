@@ -75,9 +75,7 @@ type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
-
-  """Login de usuario. Devuelve JWT"""
-  login(user_name: String!, password: String!): String!
+  login(loginInput: LoginInput!): String!
   createRole(createRoleInput: CreateRoleInput!): Role!
   updateRole(updateRoleInput: UpdateRoleInput!): Role!
   removeRole(id: Int!): Role!
@@ -149,6 +147,11 @@ input UpdateUserInput {
   deleted_at: DateTime
   salary: Float
   id: Int!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
 }
 
 input CreateRoleInput {
